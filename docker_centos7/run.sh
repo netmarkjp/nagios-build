@@ -45,6 +45,7 @@ cd nagios-plugins-${PLUGIN_VERSION}
   --with-cgiurl=/nagios/cgi-bin \
   --with-nagios-user=nagios \
   --with-nagios-group=nagios
+make all
 cd ..
 tar zcfp /root/rpmbuild/SOURCES/nagios-plugins-${PLUGIN_VERSION}.tar.gz nagios-plugins-${PLUGIN_VERSION}
 rpmbuild -bb /tmp/nagios-plugins-${PLUGIN_VERSION}/nagios-plugins.spec
