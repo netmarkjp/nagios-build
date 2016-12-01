@@ -2,7 +2,8 @@
 
 set -e
 
-NAGIOS_VERSION=$1
+NAGIOS_VERSION=${1:-4.2.3}
+PLUGIN_VERSION=${2:-2.1.4}
 
 ROOT_DIR=$(dirname $0)
 cd ${ROOT_DIR:?}
@@ -15,7 +16,7 @@ do
   docker build -t netmarkjp/nagios-build:${DOCKER_DIR} .
   cd ..
   mkdir -p tmp/${DOCKER_DIR:?} || true
-  docker run --rm -v `pwd`/tmp/${DOCKER_DIR:?}:/dest netmarkjp/nagios-build:${DOCKER_DIR} ${NAGIOS_VERSION}
+  docker run --rm -v `pwd`/tmp/${DOCKER_DIR:?}:/dest netmarkjp/nagios-build:${DOCKER_DIR} "${NAGIOS_VERSION}" "${PLUGIN_VERSION}"
 done
 
 #for DOCKER_DIR in ${DOCKER_DIRS:?}
